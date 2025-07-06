@@ -23,7 +23,7 @@ private:
         system("cls");
         std::cout << "\n";
         std::cout << "╔═══════════════════════════════════════════════════════════════╗\n";
-        std::cout << "║                ACTUALIZADOR DE CONTROLADORES v2.0            ║\n";
+        std::cout << "║                ACTUALIZADOR DE CONTROLADORES v2.0                 ║\n";
         std::cout << "║                     Creador:LuisVides Año:2025                    ║\n";
         std::cout << "╚═══════════════════════════════════════════════════════════════╝\n";
         std::cout << "\n";
@@ -93,11 +93,11 @@ private:
     }
     
     void scanForDrivers() {
-        std::cout << "\n🔍 Escaneando dispositivos del sistema...\n" << std::endl;
+        std::cout << "\n Escaneando dispositivos del sistema...\n" << std::endl;
         
         HDEVINFO deviceInfoSet = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
         if (deviceInfoSet == INVALID_HANDLE_VALUE) {
-            std::cerr << "❌ Error al obtener información de dispositivos" << std::endl;
+            std::cerr << " Error al obtener información de dispositivos" << std::endl;
             return;
         }
         
@@ -113,7 +113,7 @@ private:
             
             if (!deviceName.empty() && !deviceId.empty()) {
                 deviceList.push_back(deviceName + "|" + deviceId);
-                std::cout << "📱 Encontrado: " << deviceName << std::endl;
+                std::cout << " Encontrado: " << deviceName << std::endl;
             }
             
             deviceIndex++;
@@ -121,17 +121,17 @@ private:
         
         SetupDiDestroyDeviceInfoList(deviceInfoSet);
         
-        std::cout << "\n✅ Escaneo completado. Dispositivos encontrados: " << deviceList.size() << std::endl;
+        std::cout << "\n Escaneo completado. Dispositivos encontrados: " << deviceList.size() << std::endl;
         logMessage("Escaneo completado - " + std::to_string(deviceList.size()) + " dispositivos encontrados");
     }
     
     void updateAllDrivers() {
         if (deviceList.empty()) {
-            std::cout << "\n⚠️  No hay dispositivos para actualizar. Ejecute primero el escaneo.\n" << std::endl;
+            std::cout << "\n  No hay dispositivos para actualizar. Ejecute primero el escaneo.\n" << std::endl;
             return;
         }
         
-        std::cout << "\n🚀 Iniciando actualización masiva de controladores...\n" << std::endl;
+        std::cout << "\n Iniciando actualización masiva de controladores...\n" << std::endl;
         
         int successful = 0;
         int total = deviceList.size();
@@ -161,11 +161,11 @@ private:
     
     void showDeviceList() {
         if (deviceList.empty()) {
-            std::cout << "\n⚠️  No hay dispositivos cargados. Ejecute primero el escaneo.\n" << std::endl;
+            std::cout << "\n  No hay dispositivos cargados. Ejecute primero el escaneo.\n" << std::endl;
             return;
         }
         
-        std::cout << "\n📋 Lista de dispositivos detectados:\n" << std::endl;
+        std::cout << "\n Lista de dispositivos detectados:\n" << std::endl;
         std::cout << "┌─────┬─────────────────────────────────────────────────────────┐\n";
         std::cout << "│ No. │ Dispositivo                                             │\n";
         std::cout << "├─────┼─────────────────────────────────────────────────────────┤\n";
@@ -186,7 +186,7 @@ private:
     
     void updateSpecificDriver() {
         if (deviceList.empty()) {
-            std::cout << "\n⚠️  No hay dispositivos cargados. Ejecute primero el escaneo.\n" << std::endl;
+            std::cout << "\n  No hay dispositivos cargados. Ejecute primero el escaneo.\n" << std::endl;
             return;
         }
         
@@ -197,7 +197,7 @@ private:
         std::cin >> choice;
         
         if (choice < 1 || choice > static_cast<int>(deviceList.size())) {
-            std::cout << "❌ Número inválido." << std::endl;
+            std::cout << " Número inválido." << std::endl;
             return;
         }
         
@@ -211,7 +211,7 @@ private:
     }
     
     void showSystemInfo() {
-        std::cout << "\n💻 Información del sistema:\n" << std::endl;
+        std::cout << "\n Información del sistema:\n" << std::endl;
         
         OSVERSIONINFO osInfo;
         osInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
@@ -226,7 +226,7 @@ private:
     }
     
     void configureSettings() {
-        std::cout << "\n⚙️  Configuración del sistema:\n" << std::endl;
+        std::cout << "\n  Configuración del sistema:\n" << std::endl;
         std::cout << "1. Modo verbose: " << (verboseMode ? "Activado" : "Desactivado") << std::endl;
         std::cout << "2. Archivo de log: " << logFile << std::endl;
         std::cout << "\nSeleccione una opción para cambiar (1-2) o 0 para volver: ";
@@ -247,7 +247,7 @@ private:
             case 0:
                 return;
             default:
-                std::cout << "❌ Opción inválida" << std::endl;
+                std::cout << " Opción inválida" << std::endl;
         }
     }
     
@@ -268,13 +268,13 @@ public:
             std::cout << "┌─────────────────────────────────────────────────────────────┐\n";
             std::cout << "│                        MENÚ PRINCIPAL                       │\n";
             std::cout << "├─────────────────────────────────────────────────────────────┤\n";
-            std::cout << "│ 1. 🔍 Escanear dispositivos                                │\n";
-            std::cout << "│ 2. 🚀 Actualizar todos los controladores                   │\n";
-            std::cout << "│ 3. 🎯 Actualizar controlador específico                    │\n";
-            std::cout << "│ 4. 📋 Mostrar lista de dispositivos                        │\n";
-            std::cout << "│ 5. 💻 Información del sistema                              │\n";
-            std::cout << "│ 6. ⚙️  Configuración                                       │\n";
-            std::cout << "│ 0. 🚪 Salir                                                │\n";
+            std::cout << "│ 1.  Escanear dispositivos                                   │\n";
+            std::cout << "│ 2.  Actualizar todos los controladores                      │\n";
+            std::cout << "│ 3.  Actualizar controlador específico                       │\n";
+            std::cout << "│ 4.  Mostrar lista de dispositivos                           │\n";
+            std::cout << "│ 5.  Información del sistema                                 │\n";
+            std::cout << "│ 6.  Configuración                                           │\n";
+            std::cout << "│ 0.  Salir                                                   │\n";
             std::cout << "└─────────────────────────────────────────────────────────────┘\n";
             std::cout << "\nSeleccione una opción: ";
             
@@ -300,10 +300,10 @@ public:
                     configureSettings();
                     break;
                 case 0:
-                    std::cout << "\n👋 Gracias por usar el Actualizador de Controladores!" << std::endl;
+                    std::cout << "\n Gracias por usar el Actualizador de Controladores!" << std::endl;
                     break;
                 default:
-                    std::cout << "\n❌ Opción inválida. Presione Enter para continuar..." << std::endl;
+                    std::cout << "\n Opción inválida. Presione Enter para continuar..." << std::endl;
                     std::cin.ignore();
                     std::cin.get();
             }
@@ -327,7 +327,7 @@ int main() {
         DriverUpdater updater;
         updater.run();
     } catch (const std::exception& e) {
-        std::cerr << "❌ Error fatal: " << e.what() << std::endl;
+        std::cerr << " Error fatal: " << e.what() << std::endl;
         return 1;
     }
     
